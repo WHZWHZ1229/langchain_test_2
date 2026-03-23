@@ -1,0 +1,51 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ai_conversation_system"
+classifiers = ["Private :: Do Not Upload"]
+version = "0.1.0"
+requires-python = "==3.13.12"
+dependencies = [
+    "langchain",
+    "langchain-openai",
+    "langchain-core",
+    "langgraph",
+    "langgraph-checkpoint",
+    "pydantic",
+    "pydantic-settings",
+    "fastapi",
+    "uvicorn",
+    "httpx",
+    "python-dotenv",
+    "tenacity",
+    "loguru",
+    "rich",
+    "redis",
+    "gunicorn",
+    "unstructured[pdf,doc,docx]",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pip-tools==7.5.3",
+]
+test = [
+    "pytest",
+    "pytest-asyncio",
+    "pytest-cov",
+    "pytest-mock",
+    "respx",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py314"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
